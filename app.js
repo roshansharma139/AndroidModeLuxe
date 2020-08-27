@@ -7,7 +7,9 @@ const morgan = require("morgan");
 
 const cors = require("cors");
 const registerRoute = require("./routes/register_route");
-
+const categoryRoute = require("./routes/category_route");
+const uploadRouter = require('./routes/upload_route');
+const productRouter = require('./routes/products_router');
 
 app.use(
   bodyParser.urlencoded({
@@ -33,7 +35,9 @@ app.use(express.json());
 
 
 app.use("/register", registerRoute);
-
+app.use("/category", categoryRoute);
+app.use('/upload', uploadRouter);
+app.use('/product', productRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
