@@ -10,6 +10,9 @@ const registerRoute = require("./routes/register_route");
 const categoryRoute = require("./routes/category_route");
 const uploadRouter = require('./routes/upload_route');
 const productRouter = require('./routes/products_router');
+const MainProductRoute = require('./routes/mainproduct_route');
+const CartRoute = require('./routes/cart_route');
+const OrderRoute = require('./routes/orders_router');
 
 app.use(
   bodyParser.urlencoded({
@@ -38,6 +41,10 @@ app.use("/register", registerRoute);
 app.use("/category", categoryRoute);
 app.use('/upload', uploadRouter);
 app.use('/product', productRouter);
+app.use('/main', MainProductRoute);
+app.use('/cart', CartRoute);
+app.use('/order', OrderRoute);
+app.use(auth.verifyUser);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
